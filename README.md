@@ -29,3 +29,13 @@ REQUIREMENT:
     Use system calls only when you need to
 
     There should be no memory leaks in our shell
+
+    UPDATED:
+    IMPLEMENTED: 
+                the UNIX command line interpreter.
+                the command line with arguments.
+                the PATH.
+                the exit built-in, that exist the shell.
+                the env built-in, that printsthe current environment.
+
+    I WILL KEEP UPDATING THE LIST AS I PROGRESS,
