@@ -37,7 +37,7 @@ int main(int argc, char *argx[])
 			}
 		}
 		line_number++;
-		str(line_number, s);
+		str(line_number, s); /*converts linenumber to strings*/
 		/* implement a varible that keeps track of how many argument the user inputed */
 		i = 0;
 		count = 0;
