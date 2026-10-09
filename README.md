@@ -37,5 +37,6 @@ REQUIREMENT:
                 the PATH.
                 the exit built-in, that exist the shell.
                 the env built-in, that printsthe current environment.
+                a custom getline function.
 
     I WILL KEEP UPDATING THE LIST AS I PROGRESS,
