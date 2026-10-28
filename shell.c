@@ -4,7 +4,7 @@
 *Program: WinMingle Community C Training
 *Description: simple shell implementation
 */
-int main(int argc, char *argx[])
+int simple_shell(int argc, char *argx[])
 {
 	int i = 1, k = 0, m = 0, l = 0, count = 0, path_count = 0, found = 0, found_env = 0;
 	int line_number = 0;
