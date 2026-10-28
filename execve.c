@@ -1,4 +1,4 @@
-#include "shell.h"
+#include "main.h"
 /*
 *Author: Chillexy Steven   
 *Program: WinMingle Community C Training
@@ -22,7 +22,6 @@ void exec_command(char *dir, char *command[])
 			perror("");
 		}
 	}
-	
 	else /* parent process */
 	{
 		wait(&status);
