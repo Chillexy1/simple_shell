@@ -53,6 +53,8 @@ char *my_getline(void)
 		while (!found)
 		{	
 			n = read(0, buff, 1024);
+			if (n <= 0)
+				return (NULL);
 			buff[n] = '\0';
 			i = 0;
 			while (i < n)
@@ -98,6 +100,8 @@ char *my_getline(void)
 	else
 	{
 		n = read(0, buff, 1024);
+		if (n <= 0)
+			return (NULL);
 		buff[n] = '\0'; /* make the byte a valid c string */
 		i = 0;
 		while (i < n)
@@ -129,6 +133,8 @@ char *my_getline(void)
 		while (!found)/* implement contion if \n isn't found */
 		{
 			n = read(0, buff, 1024);
+			if (n <= 0)
+				return (NULL);
 			buff[n] = '\0';
 			j = 0;
 			len = _strlen(line);
