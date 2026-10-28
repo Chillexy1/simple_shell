@@ -1,5 +1,4 @@
 #include "main.h"
-
 /*
 *Author: Chillexy Steven    
 *Program: WinMingle Community C Training
@@ -169,7 +168,6 @@ char *my_getline(void)
 					len++;
 				}
 				line[len] = '\0';
-
 			}
 		}
 	}
