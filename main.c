@@ -6,9 +6,11 @@
 */
 int main(int argc, char *argx[])
 {
-	int i = 1, k = 0, m = 0, l = 0, count = 0, path_count = 0, found = 0, found_env = 0;
+	int i = 1, k = 0, m = 0, l = 0, count = 0;
+	int path_count = 0, found = 0, found_env = 0;
 	int line_number = 0;
-	char *cmd = NULL, *token, s[50], *env = "PATH", *terminate = "exit", *path, *path_cpy, *terminal = "env";
+	char *cmd = NULL, *token, s[50], *env = "PATH";
+	char *terminate = "exit", *path, *path_cpy, *terminal = "env";
 	char **argv, **dir, **shell;
 	char *error = ": No such file or directory\n";
 	size_t len = 0;
