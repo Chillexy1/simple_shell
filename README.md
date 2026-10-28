@@ -18,7 +18,8 @@ Every students are eexpected to learn and known without the use of google :
           ·What is EOF / “end-of-file”?
 
 REQUIREMENT:
-    All files to be compiled on Ubuntu using gcc, using the options -Wall -Werror -Wextra -pedantic -std=gnu89
+    All files to be compiled on Ubuntu using the compilation instruction:
+        gcc -Wall -Werror -Wextra -pedantic -std=gnu89
 
     All files must end with a new line
 
