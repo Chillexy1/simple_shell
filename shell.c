@@ -9,35 +9,25 @@ int simple_shell(int argc, char *argx[])
 	int i = 1, k = 0, m = 0, l = 0, count = 0;
 	int path_count = 0, found = 0, found_env = 0;
 	int line_number = 0;
-	char *cmd = NULL, *token, s[50], *env = "PATH";
+	char *cmd, *token, s[50], *env = "PATH";
 	char *terminate = "exit", *path, *path_cpy, *terminal = "env";
-	char **argv, **dir, **shell;
+	char **argv = NULL, **dir, **shell;
 	char *error = ": No such file or directory\n";
-	size_t len = 0;
 	extern char **environ;
 	(void)argc;
 	while (1)
 	{
-		if (isatty(0)) /* interactive mode check */
-		{
+		if (isatty(0))/* if its an iteractive mode */
 			write(1, "($) ", 4);
-		}
-		if (getline(&cmd, &len, stdin) == -1) /* check if command failed */
+		cmd = my_getline();
+		if (cmd == NULL)
 		{
-			if (feof(stdin) != 0) /* on success */
-			{
+			if (isatty(0))
 				write(1, "\n", 1);
-				free(cmd);
-				exit(EXIT_SUCCESS);
-			}
-			else /*if it fails */
-			{
-				perror("");
-				free(cmd);
-				free(argv);
-				exit(EXIT_FAILURE);
-			}
+			free(argv);
+			exit(EXIT_SUCCESS);
 		}
+		
 		line_number++;
 		str(line_number, s); /*converts linenumber to strings*/
 		/* implement a varible that keeps track of how many argument the user inputed */
@@ -57,7 +47,6 @@ int simple_shell(int argc, char *argx[])
 		if (argv == NULL)
 		{
 			perror("");
-			free(cmd);
 			exit(EXIT_FAILURE);
 		}
 		token = strtok(cmd, " \n");
@@ -83,7 +72,6 @@ int simple_shell(int argc, char *argx[])
 				k++;
 			if (argv[0][k] == terminate[k])
 			{
-				free(cmd);
 				free(argv);
 				return (0);
 			}
@@ -109,6 +97,7 @@ int simple_shell(int argc, char *argx[])
 		}
 		if (found_env)/* this block also includes the env implementation cause wthout it we get double output of the environment*/
 		{
+			free(argv);
 			continue;
 		}
 		/*___end___of_____argv[0]____commands____implementation_____*/
@@ -200,6 +189,7 @@ int simple_shell(int argc, char *argx[])
 				free(dir);
 				free(path_cpy);
 				free(argv);
+				free (shell);
 				exit(EXIT_FAILURE);
 
 			}
@@ -232,8 +222,12 @@ int simple_shell(int argc, char *argx[])
 				free(path_cpy);
 				free(dir);
 				free(shell);
+				free(argv);
+				argv = NULL;
 				break;
 			}
+			else
+				free(shell[i]);
 			/*___end____of___execution___*/
 			i++;
 
@@ -251,15 +245,18 @@ int simple_shell(int argc, char *argx[])
 			free(path_cpy);
 			free(dir);
 			free(shell);
+			free(argv);
+			continue;
 		}
 		/*_____end___of___error___implementation___*/
 		/* execute file if first  command is executable */
-		if (access(argv[0], X_OK) == 0 && !found)
+		if (!found && access(argv[0], X_OK) == 0)
 		{
 			exec_command(argv[0], argv);
 			free(path_cpy);
-			free(argv);
+			free(dir);
 			free(shell);
+			free(argv);
 		}
 		/*_____end___of___first____command___implementation____*/
 	}
