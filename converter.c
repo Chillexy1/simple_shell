@@ -6,7 +6,7 @@
 */
 void str(long int n, char *s)
 {
-	long int i = 0, len;
+	long int i = 0, size = 0, len;
 	long int digit;
 	char form;
 	char c;
@@ -20,7 +20,9 @@ void str(long int n, char *s)
 	}
 	s[i] = '\0';
 	i = 0;
-	len = _strlen(s) - 1;
+	while (s[size])
+		size++;
+	len = size - 1;
 	/* because evry int was converted to a char in a reversed format we get them back into its original form by printing them back from the reversed form again*/
 	while(i < len)
 	{
