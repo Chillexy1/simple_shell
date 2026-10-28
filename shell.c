@@ -1,4 +1,4 @@
-#include "shell.h"
+#include "main.h"
 /*
 *Author: Chillexy Steven  
 *Program: WinMingle Community C Training
