@@ -22,7 +22,6 @@ void exec_command(char *dir, char *command[])
 			perror("");
 		}
 	}
-	
 	else /* parent process */
 	{
 		wait(&status);
