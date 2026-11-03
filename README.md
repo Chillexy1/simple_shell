@@ -38,6 +38,8 @@ REQUIREMENT:
                 the PATH.
                 the exit built-in, that exist the shell.
                 the env built-in, that printsthe current environment.
-                a custom getline function.
+                my_getline function that reads user input tothe standard output.
+                a function that converts an interger to string
+                _strtok function that tokenizes a string .
 
     I WILL KEEP UPDATING THE LIST AS I PROGRESS,
