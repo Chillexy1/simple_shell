@@ -13,5 +13,6 @@ char *my_getline(void);
 void exec_command(char *dir, char *command[]);
 int _strlen(char *str);
 void str(long int n, char *s);
+char **_strtok(char *str, char *delim);
 
 #endif /* MAIN_H */
