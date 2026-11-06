@@ -1,5 +1,4 @@
 #include "main.h"
-#include <stdio.h>
 /*
 *Author: Chillexy Steven  
 *Program: WinMingle Community C Training
