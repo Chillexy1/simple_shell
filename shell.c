@@ -1,4 +1,5 @@
 #include "main.h"
+#include <stdio.h>
 /*
 *Author: Chillexy Steven  
 *Program: WinMingle Community C Training
@@ -8,7 +9,7 @@ int simple_shell(int argc, char *argx[])
 {
 	int i = 1, k = 0, m = 0, l = 0, count = 0;
 	int path_count = 0, found = 0, found_env = 0;
-	int line_number = 0;
+	int line_number = 0, status = 0;
 	char *cmd, *token, s[50], *env = "PATH";
 	char *terminate = "exit", *path, *path_cpy, *terminal = "env";
 	char **argv = NULL, **dir, **shell;
@@ -63,44 +64,67 @@ int simple_shell(int argc, char *argx[])
 			free(argv);
 			continue;
 		}
-		/* implement functions/commands around argv[0]*/
-		while (argv[0])
+		/* implemnet the env button */
+		k = 0;
+		i = 0;
+		found_env = 0;
+		while (k < count)
 		{
-			/* implement the exit function */
-			k = 0;
-			while (argv[0][k] == terminate[k] && argv[0][k] && terminate[k])
-				k++;
-			if (argv[0][k] == terminate[k])
+			while (argv[k][i] == terminal[i] && argv[k][i] && terminal[i])/*compare strings equality*/
+				i++;
+			if (argv[k][i] == terminal[i])
 			{
+				if (count != 1)
+				{
+					break;
+				}
+				found_env = 1;
+				l = 0;
+				while (environ[l])
+				{
+					write(1, environ[l], _strlen(environ[l]));
+					write(1, "\n",1);
+					l++;
+				}
+			}
+			break;
+			k++;
+		}
+		/*____end___of___env___implementation___*/
+		/* implement the exit function */
+		k = 0;
+		i = 0;
+		while (i < count)
+		{
+			while (argv[i][k] == terminate[k] && argv[i][k] && terminate[k])
+				k++;
+			if (argv[i][k] == terminate[k])/*if exit comparison is true*/
+			{
+				if (count == 2)
+				{
+					k = 0;
+					while (argv[i + 1][k])
+					{
+						if (argv[i+1][k] >= '0' && argv[i + 1][k] <= '9')
+						{
+							status = status * 10 + (argv[i + 1][k] - '0');
+						}
+						k++;
+					}
+					free(argv);
+					return (status);
+				}
 				free(argv);
 				return (0);
 			}
-			/*___end___of___exit____function___*/
-			/* implemnet the env button */
-			i = 0;
-			found_env = 0;
-			while (argv[0][i] == terminal[i] && argv[0][i] && terminal[i])/*compare strings equality*/
-				i++;
-			if (argv[0][i] == terminal[i])
-			{
-				found_env = 1;
-				l = 0;
-				while (environ[i])
-				{
-					write(1, environ[i], _strlen(environ[i]));
-					write(1, "\n",1);
-					i++;
-				}
-			}
-			/*____end___of___env___implementation___*/
-			break;
+			i++;
 		}
+		/*___end___of___exit____function___*/
 		if (found_env)/* this block also includes the env implementation cause wthout it we get double output of the environment*/
 		{
 			free(argv);
 			continue;
 		}
-		/*___end___of_____argv[0]____commands____implementation_____*/
 		/* extract path from environ */
 		i = 0;
 		k = 0;
