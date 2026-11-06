@@ -40,6 +40,7 @@ REQUIREMENT:
                 the env built-in, that printsthe current environment.
                 my_getline function that reads user input tothe standard output.
                 a function that converts an interger to string
-                _strtok function that tokenizes a string .
+                _strtok function that tokenizes a string.
+                argument for the built-in exit fuction
 
     I WILL KEEP UPDATING THE LIST AS I PROGRESS,
