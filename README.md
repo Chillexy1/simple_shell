@@ -42,5 +42,6 @@ REQUIREMENT:
                 a function that converts an interger to string
                 _strtok function that tokenizes a string.
                 argument for the built-in exit fuction
+                custom setenv and unsetenv builtins
 
     I WILL KEEP UPDATING THE LIST AS I PROGRESS,
